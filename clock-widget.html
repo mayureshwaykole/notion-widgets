@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock Widget</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f6f3;
+    }
+    .clock {
+      width: 300px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      text-align: center;
+    }
+    .clock-time {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+    .clock-date {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="clock-time" id="clock-time">--:--</div>
+    <div class="clock-date" id="clock-date">Loading...</div>
+  </div>
+  <script>
+    function updateClock() {
+      const options = { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-US', options);
+      const date = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/Los_Angeles' });
+      document.getElementById('clock-time').textContent = time;
+      document.getElementById('clock-date').textContent = date;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
