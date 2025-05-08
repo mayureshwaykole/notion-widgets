@@ -16,38 +16,68 @@
       background-color: #f7f6f3;
     }
     .progress {
-      width: 300px;
+      width: 320px;
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      font-size: 14px;
+      color: #333;
+    }
+    .progress-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .progress-header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
     }
     .progress-bar {
-      height: 8px;
-      border-radius: 4px;
+      height: 10px;
+      border-radius: 5px;
       background: #e0e0e0;
-      margin: 8px 0;
+      margin: 12px 0;
       position: relative;
+      overflow: hidden;
     }
     .progress-bar-fill {
       height: 100%;
-      border-radius: 4px;
-      background: #4caf50;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #4caf50, #81c784);
       width: 0;
+      transition: width 0.3s ease;
     }
     .progress-label {
-      font-size: 14px;
-      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .progress-label span {
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="progress">
-    <div class="progress-label" id="days-label"></div>
+    <div class="progress-header">
+      <img src="https://img.icons8.com/ios-filled/50/4caf50/calendar.png" alt="Calendar Icon">
+      <h3 style="margin: 0; font-size: 16px;">Yearly Progress</h3>
+    </div>
+    <div class="progress-label">
+      <span>Days</span>
+      <span id="days-label"></span>
+    </div>
     <div class="progress-bar">
       <div class="progress-bar-fill" id="days-bar"></div>
     </div>
-    <div class="progress-label" id="weeks-label"></div>
+    <div class="progress-label">
+      <span>Weeks</span>
+      <span id="weeks-label"></span>
+    </div>
     <div class="progress-bar">
       <div class="progress-bar-fill" id="weeks-bar"></div>
     </div>
@@ -61,8 +91,8 @@
     const weeksInYear = daysInYear / 7;
     const weeksPassed = daysPassed / 7;
 
-    document.getElementById('days-label').textContent = `Days passed: ${Math.floor(daysPassed)} / ${Math.floor(daysInYear)}`;
-    document.getElementById('weeks-label').textContent = `Weeks passed: ${Math.floor(weeksPassed)} / ${Math.floor(weeksInYear)}`;
+    document.getElementById('days-label').textContent = `${Math.floor(daysPassed)} / ${Math.floor(daysInYear)}`;
+    document.getElementById('weeks-label').textContent = `${Math.floor(weeksPassed)} / ${Math.floor(weeksInYear)}`;
     document.getElementById('days-bar').style.width = `${(daysPassed / daysInYear) * 100}%`;
     document.getElementById('weeks-bar').style.width = `${(weeksPassed / weeksInYear) * 100}%`;
   </script>

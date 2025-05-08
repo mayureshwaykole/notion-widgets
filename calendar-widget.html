@@ -16,32 +16,43 @@
       background-color: #f7f6f3;
     }
     .calendar {
-      width: 300px;
+      width: 320px;
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       padding: 16px;
+      border: 1px solid #e3e3e3;
     }
     .calendar-header {
       text-align: center;
       font-weight: 600;
+      font-size: 18px;
       margin-bottom: 16px;
+      color: #333;
     }
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+      gap: 4px; /* Reduce gap to prevent overflow */
     }
     .day {
       width: 100%;
       padding: 8px;
       text-align: center;
-      border-radius: 4px;
-      background: #f0f0f0;
+      border-radius: 6px;
+      background: #fafafa;
       font-size: 14px;
+      color: #555;
+      transition: background 0.2s, color 0.2s;
+      box-sizing: border-box; /* Ensure padding is included in width */
+    }
+    .day:hover {
+      outline: 2px solid #e3e3e3; /* Add outline instead of expanding background */
+      outline-offset: -2px; /* Align outline with the element */
+      cursor: pointer;
     }
     .day.today {
-      background: #4caf50;
+      background: #4585f5;
       color: white;
       font-weight: bold;
     }
